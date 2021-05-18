@@ -1,0 +1,42 @@
+# Load the Python Standard and DesignScript Libraries
+import sys
+import clr
+clr.AddReference('ProtoGeometry')
+from Autodesk.DesignScript.Geometry import *
+
+# The inputs to this node will be stored as a list in the IN variables.
+listOfService = IN[0]
+
+# Custom variables
+PAREDE_RVT_COD = []
+CHAPISCO_EXT_RVT_COD = []
+EMBOCO_EXT_RVT_COD = []
+MASSA_UNICA_EXT_RVT_COD = []
+CERAMICA_EXT_RVT_COD = []
+MASSA_CORRIDA_EXT_RVT_COD = []
+SELADOR_EXT_RVT_COD = []
+PINTURA_EXT_RVT_COD = []
+TEXTURA_EXT_RVT_COD = []
+# Place your code below this line
+for i in listOfService:
+	for j in i:
+		if j == "DRYWALL_SIMPLES" or j == "DRYWALL_DUPLA":
+			PAREDE_RVT_COD.append("PAREDE_RVT_COD")
+		elif j == "CHAPISCO_EXT_SERV":
+			CHAPISCO_EXT_RVT_COD.append("CHAPISCO_EXT_RVT_COD")
+		elif j == "EMBOCO_EXT_SERV_25mm" or j == "EMBOCO_EXT_SERV_35mm" or j == "EMBOCO_EXT_SERV_45mm" or j == "EMBOCO_EXT_SERV_50mm":
+			EMBOCO_EXT_RVT_COD.append("EMBOCO_EXT_RVT_COD")
+		elif j == "MASSA_UNICA_EXT_SERV_25mm" or j == "MASSA_UNICA_EXT_SERV_35mm" or j == "MASSA_UNICA_EXT_SERV_45mm" or j == "MASSA_UNICA_EXT_SERV_50mm":
+			MASSA_UNICA_EXT_RVT_COD.append("MASSA_UNICA_EXT_RVT_COD")
+		elif j == "CERAMICA_PORCELANA_EXT_5X5cm" or j == "CERAMICA_PORCELANA_EXT_5X10cm":
+			CERAMICA_EXT_RVT_COD.append("CERAMICA_EXT_RVT_COD")
+		elif j == "MASSA_CORRIDA_ACRILICA_EXT_UMA_DEMAO_MULTPAV_SERV" or j == "MASSA_CORRIDA_ACRILICA_EXT_DUAS_DEMAOS_MULTPAV_SERV":
+			MASSA_CORRIDA_EXT_RVT_COD.append("MASSA_CORRIDA_EXT_RVT_COD")
+		elif j == "SELADOR_ACRILICO_EXT_MULTPAV_SERV":
+			SELADOR_EXT_RVT_COD.append("SELADOR_EXT_RVT_COD")
+		elif j == "PINTURA_ACRILICA_EXT_MULTPAV_SERV":
+			PINTURA_EXT_RVT_COD.append("PINTURA_EXT_RVT_COD")
+		elif j == "TEXTURA_ACRILICA_EXT_UMA_COR_MULTPAV_SERV" or j == "TEXTURA_ACRILICA_EXT_DUAS_CORES_MULTPAV_SERV":
+			TEXTURA_EXT_RVT_COD.append("TEXTURA_EXT_RVT_COD")
+# Assign your output to the OUT variable.
+OUT = PAREDE_RVT_COD + CHAPISCO_EXT_RVT_COD + EMBOCO_EXT_RVT_COD + MASSA_UNICA_EXT_RVT_COD + CERAMICA_EXT_RVT_COD + MASSA_CORRIDA_EXT_RVT_COD + SELADOR_EXT_RVT_COD + PINTURA_EXT_RVT_COD + TEXTURA_EXT_RVT_COD
